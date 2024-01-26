@@ -12,14 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"GAME@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "GAME@workspace:."
-  dependencies:
-    serve: "npm:^14.2.1"
-  languageName: unknown
-  linkType: soft
-
 "accepts@npm:~1.3.5":
   version: 1.3.8
   resolution: "accepts@npm:1.3.8"
@@ -327,6 +319,14 @@ __metadata:
   checksum: d85c5c409cf0215417380f98a2d29c23a95004d93ff0d8bdf1af5f1a9d1fc608ac89ac6ffe863783d2c73efb3850dd35390feb1de3296f49877bfee0392eb5d3
   languageName: node
   linkType: hard
+
+"game@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "game@workspace:."
+  dependencies:
+    serve: "npm:^14.2.1"
+  languageName: unknown
+  linkType: soft
 
 "get-stream@npm:^6.0.0":
   version: 6.0.1

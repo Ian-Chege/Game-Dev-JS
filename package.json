@@ -1,5 +1,5 @@
 {
-  "name": "GAME",
+  "name": "game",
   "packageManager": "yarn@4.0.2",
   "scripts": {
     "start": "serve"
