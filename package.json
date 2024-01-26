@@ -1,4 +1,10 @@
 {
   "name": "GAME",
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.0.2",
+  "scripts": {
+    "start": "serve"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
 }
