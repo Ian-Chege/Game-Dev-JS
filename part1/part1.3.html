@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>HTML canvas</title>
+    <style media='screen'>
+        body{
+            text-align: center;
+            font-family: sans-serif;
+        }
+        canvas {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML Canvas</h1>
+    <canvas id="asteroids" width="400" height="400">
+        <!-- (optional) Fallback content if the browser doesn't support canvas element -->
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('asteroids');
+        var context = canvas.getContext("2d");
+        context.font = '48px serif';
+        context.fillText("Hello world", 10, 50);
+        context.strokeText("Hello world", 10, 100);
+    </script>
+</body>
+
+</html>
