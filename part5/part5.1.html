@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="drawing.js"></script>
+    <script src="part5.1.js"></script>
+    <title>Drawing an asteroid</title>
+</head>
+
+<body>
+    <h2>Drawing an asteroid</h2>
+    <canvas id="asteroids" width="400" height="400"></canvas>
+    <script>
+        var context = document.getElementById("asteroids").getContext("2d");
+        draw_grid(context);
+        let segments = 1;
+        for (let x = 0.25; x < 1; x += 0.5) {
+            for (let y = 0.25; y < 1; y += 0.5) {
+                segments += 2;
+                context.save();
+                context.translate(
+                    context.canvas.width * x,
+                    context.canvas.height * y
+                );
+                draw_asteroid(context, 60, segments, { guide: true });
+                context.restore();
+            }
+        }
+    </script>
+</body>
+
+</html>
