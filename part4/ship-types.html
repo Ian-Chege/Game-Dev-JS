@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="drawing.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Ship Types</title>
+</head>
+
+<body>
+    <h1>Ship Types</h1>
+    <canvas id="asteroids" width="400" height="400"></canvas>
+    <script>
+        var context = document.getElementById("asteroids").getContext("2d");
+        draw_grid(context);
+        let c1 = 0,
+            c2 = 0;
+        for (c1 = 0.1; c1 < 1; c1 += 0.2) {
+            for (c2 = 0.1; c2 < 1; c2 += 0.2) {
+                context.save();
+                context.translate(
+                    context.canvas.width * c1,
+                    context.canvas.height * c2
+                );
+                context.rotate(-Math.PI / 2);
+                draw_ship(context, context.canvas.width / 12, {
+                    curve1: c1,
+                    curve2: c2,
+                    guide: true,
+                });
+                context.restore();
+            }
+        }
+    </script>
+</body>
+
+</html>

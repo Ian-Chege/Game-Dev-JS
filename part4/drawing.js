@@ -82,3 +82,47 @@ function draw_ship(ctx, x, y, radius, options) {
   ctx.stroke(); // outline the shape
   ctx.restore(); // restore the original context state
 }
+
+
+// Final Ship Drawing Function
+// function draw_ship(ctx, radius, options) {
+//   options = options || {};
+//   let angle = (options.angle || 0.5 * Math.PI) / 2;
+//   // Now we have two curve arguments
+//   let curve1 = options.curve1 || 0.25;
+//   let curve2 = options.curve2 || 0.75;
+//   ctx.save();
+//   if (options.guide) {
+//     ctx.strokeStyle = "white";
+//     ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+//     ctx.lineWidth = 0.5;
+//     ctx.beginPath();
+//     ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+//     ctx.stroke();
+//     ctx.fill();
+//   }
+//   ctx.lineWidth = options.lineWidth || 2;
+//   ctx.strokeStyle = options.stroke || "white";
+//   ctx.fillStyle = options.fill || "black";
+//   ctx.beginPath();
+//   ctx.moveTo(radius, 0);
+//   // here we have the three curves
+//   ctx.quadraticCurveTo(
+//     Math.cos(angle) * radius * curve2,
+//     Math.sin(angle) * radius * curve2,
+//     Math.cos(Math.PI - angle) * radius,
+//     Math.sin(Math.PI - angle) * radius
+//   );
+//   ctx.quadraticCurveTo(-radius * curve1, 0,
+//     Math.cos(Math.PI + angle) * radius,
+//     Math.sin(Math.PI + angle) * radius
+//   );
+//   ctx.quadraticCurveTo(
+//     Math.cos(-angle) * radius * curve2,
+//     Math.sin(-angle) * radius * curve2,
+//     radius, 0
+//   );
+//   ctx.fill();
+//   ctx.stroke();
+//   ctx.restore();
+// }
