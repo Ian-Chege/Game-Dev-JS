@@ -13,15 +13,15 @@
     <script>
         var context = document.getElementById("asteroids").getContext("2d");
         draw_grid(context);
-        draw_ship(context, 200, 200, 150, { guide: true })
-        // different properties to draw the ship
+        // draw_ship(context, 200, 200, 150)
+        // // different properties to draw the ship
         // draw_ship(context, 75, 75, 50, { stroke: "gold", fill: "purple" });
         // draw_ship(context, 325, 325, 50, { angle: 0.8 * Math.PI, guide: true });
         // draw_ship(context, 325, 75, 50, { lineWidth: 8, fill: "blue" });
 
         // Final ship drawing
-        // context.translate(200, 200);
-        // draw_ship(context, 150);
+        context.translate(200, 200);
+        draw_ship(context, 150);
     </script>
 </body>
 
