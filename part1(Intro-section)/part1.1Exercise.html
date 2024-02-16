@@ -1,0 +1,26 @@
+<!-- Modify the given HTML code to draw a rectangle with a different position and size on the canvas. The top-left corner of the rectangle should be at (50,50), and the rectangle should have a width of 300 pixels and a height of 200 pixels. Also, change the stroke color to 'red' and the line width to 10. -->
+
+<!doctype html>
+<html>
+
+<head>
+    <title>HTML canvas</title>
+</head>
+
+<body>
+    <h1>HTML Canvas</h1>
+    <canvas id="asteroids" width="400" height="400">
+        <!-- (optional) Fallback content if the browser doesn't support canvas element -->
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('asteroids');
+        var context = canvas.getContext("2d");
+        context.strokeStyle = 'dimgrey';
+        context.lineWidth = 5;
+        context.rect(75,75,250,250); 
+        context.stroke();
+    </script>
+</body>
+
+</html>

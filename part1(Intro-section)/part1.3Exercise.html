@@ -1,0 +1,42 @@
+<!-- 
+Modify the given HTML code to change the text rendering on the canvas.
+
+1.Change the font size and family of the text to '36px Arial'.
+2. Change the text from 'Hello world' to 'Welcome to Canvas!'.
+3. Change the position of the filled text to (20, 75).
+4. Change the position of the stroked text to (20, 150).
+5. Add a new line of text that says 'Enjoy creating!' with a font size and family of '24px Times New Roman', positioned at (30, 225). This text should be filled, not stroked.  
+-->
+
+<!doctype html>
+<html>
+
+<head>
+    <title>HTML canvas</title>
+    <style media='screen'>
+        body{
+            text-align: center;
+            font-family: sans-serif;
+        }
+        canvas {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML Canvas</h1>
+    <canvas id="asteroids" width="400" height="400">
+        <!-- (optional) Fallback content if the browser doesn't support canvas element -->
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('asteroids');
+        var context = canvas.getContext("2d");
+        context.font = '48px serif';
+        context.fillText("Hello world", 10, 50);
+        context.strokeText("Hello world", 10, 100);
+    </script>
+</body>
+
+</html>

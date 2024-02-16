@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>HTML canvas</title>
+    <style media='screen'>
+        /* Add your CSS here */
+        body{
+            text-align: left;
+            font-family: 'Courier New';
+        }
+        canvas {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML Canvas</h1>
+    <canvas id="asteroids" width="400" height="400"></canvas>
+    <script>
+        var canvas = document.getElementById('asteroids');
+        var context = canvas.getContext("2d");
+        /* Add your JavaScript code here */
+        // Draw a rectangle
+        context.strokeStyle = 'black';
+        context.lineWidth = 2;
+        context.rect(10, 20, 350, 100);
+        context.stroke();
+
+        // Draw a circle
+        context.beginPath();
+        /* 
+        The center of the arc is at the point (300, 300).
+        The radius of the arc is 50.
+        The starting angle of the arc is 0 (which corresponds to the 3 o’clock position on a clock).
+        The ending angle of the arc is 2 * Math.PI (which is equivalent to 360 degrees or a full circle in radians). */
+        context.arc(300, 300, 50, 0, 2 * Math.PI);
+        context.stroke();
+
+        // Render the text
+        context.font = '36px Arial';
+        context.fillText("Welcome to Canvas!", 20, 75);
+        context.font = '24px Times New Roman';
+        context.fillText("Enjoy creating!", 30, 225);
+    </script>
+</body>
+
+</html>
