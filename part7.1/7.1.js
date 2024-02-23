@@ -15,8 +15,8 @@ let y = context.canvas.height * Math.random();
 let angle = 0;
 
 // asteroid movement
-let x_speed = context.canvas.width * (Math.random() - 0.5);
-let y_speed = context.canvas.height * (Math.random() - 0.5);
+let x_speed = context.canvas.width * (Math.random() - 0.5); // measured in pixels per second (px/s)
+let y_speed = context.canvas.height * (Math.random() - 0.5); // measured in pixels per second (px/s)
 let rotation_speed = 2 * Math.PI * (Math.random() - 0.5);
 
 // function to update the asteroid variables

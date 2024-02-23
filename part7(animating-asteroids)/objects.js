@@ -1,3 +1,4 @@
+// object constructor
 function Asteroid(segments, radius, noise) {
   this.x = context.canvas.width * Math.random();
   this.y = context.canvas.height * Math.random();
@@ -14,6 +15,7 @@ function Asteroid(segments, radius, noise) {
   }
 }
 
+// prototype method
 Asteroid.prototype.update = function (elapsed) {
   if (this.x - this.radius + elapsed * this.x_speed > context.canvas.width) {
     this.x = -this.radius;

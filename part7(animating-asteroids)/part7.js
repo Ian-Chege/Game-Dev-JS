@@ -20,32 +20,6 @@ let context = document.getElementById("asteroids").getContext("2d");
 
 // let asteroid = new Asteroid(24, 50, 0.3);
 
-// function that updates the position and rotation of an asteroid
-// function update(elapsed) {
-//   if (
-//     asteroid.x - asteroid.radius + elapsed * asteroid.x_speed >
-//     context.canvas.width
-//   ) {
-//     asteroid.x = -asteroid.radius;
-//   }
-//   if (asteroid.x + asteroid.radius + elapsed * asteroid.x_speed < 0) {
-//     asteroid.x = context.canvas.width + asteroid.radius;
-//   }
-//   if (
-//     asteroid.y - asteroid.radius + elapsed * asteroid.y_speed >
-//     context.canvas.height
-//   ) {
-//     asteroid.y = -asteroid.radius;
-//   }
-//   if (asteroid.y + asteroid.radius + elapsed * asteroid.y_speed < 0) {
-//     asteroid.y = context.canvas.height + asteroid.radius;
-//   }
-//   asteroid.x += elapsed * asteroid.x_speed;
-//   asteroid.y += elapsed * asteroid.y_speed;
-//   asteroid.angle =
-//     (asteroid.angle + elapsed * asteroid.rotation_speed) % (2 * Math.PI);
-// }
-
 let asteroids = [
   new Asteroid(24, 50, 0.2),
   new Asteroid(24, 50, 0.5),

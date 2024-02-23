@@ -148,31 +148,3 @@ function draw_asteroid(ctx, radius, shape, options) {
   }
   ctx.restore();
 }
-
-// function draw(ctx, guide) {
-//   if (guide) {
-//     draw_grid(ctx);
-//   }
-//   ctx.save();
-//   ctx.translate(x, y);
-//   ctx.rotate(angle);
-//   draw_asteroid(ctx, radius, shape, {
-//     guide: guide,
-//     noise: noise,
-//   });
-//   ctx.restore();
-// }
-
-// function draw(ctx, guide) {
-//   if (guide) {
-//     draw_grid(ctx);
-//   }
-//   ctx.save();
-//   ctx.translate(asteroid.x, asteroid.y);
-//   ctx.rotate(asteroid.angle);
-//   draw_asteroid(ctx, asteroid.radius, asteroid.shape, {
-//     guide: guide,
-//     noise: asteroid.noise,
-//   });
-//   ctx.restore();
-// }
