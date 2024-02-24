@@ -171,5 +171,6 @@ function draw(ctx, guide) {
   ctx.rotate(angle);
   // call the function to draw the asteroid and pass in the parameters
   // ctx, radius, shape
+  draw_asteroid(ctx, radius, shape);
   ctx.restore();
 }

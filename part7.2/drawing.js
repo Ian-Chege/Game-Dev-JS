@@ -169,9 +169,10 @@ function draw(ctx, guide) {
     draw_grid(ctx);
   }
   ctx.save();
-  ctx.translate(x, y);
-  ctx.rotate(angle);
+  ctx.translate(asteroid.x, asteroid.y);
+  ctx.rotate(asteroid.angle);
   // call the function to draw the asteroid and pass in the parameters
   // ctx, radius, shape
+  draw_asteroid(ctx, asteroid.radius, asteroid.shape);
   ctx.restore();
 }
