@@ -30,6 +30,29 @@ function update(elapsed) {
 }
 
 // implement the key handler function here
+function key_handler(e, value) {
+  let nothing_handled = false;
+  switch (e.key || e.keycode) {
+    case "ArrowUp":
+    case 37:
+      ship.thruster_on = value;
+      break;
+    case "ArrowLeft":
+    case 37:
+      ship.left_thruster = value;
+      break;
+    case "ArrowRight":
+    case 39:
+      ship.right_thruster = value;
+      break;
+    case "g":
+    case 71:
+      if (value) guide = !guide;
+    default:
+      nothing_handled = true;
+  }
+  if (!nothing_handled) e.preventDefault();
+}
 
 context.canvas.addEventListener(
   "keydown",

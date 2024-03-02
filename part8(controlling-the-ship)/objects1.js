@@ -95,6 +95,8 @@ function Ship(mass, radius, x, y, power, weapon_power) {
   this.thruster_power = power;
   this.steering_power = this.thruster_power / 20;
   // initialize the right thruster and left thruster here
+  this.right_thruster = false;
+  this.left_thruster = false;
   this.thruster_on = false;
 }
 extend(Ship, Mass);
