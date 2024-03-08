@@ -18,15 +18,31 @@ let ship = new Ship(
   200
 );
 
+let projectiles = []; //new array to hold the projectiles
+
 function draw() {
-  draw_grid(context);
+  if (guide) {
+    draw_grid(context);
+  }
   asteroid.draw(context, guide);
+  projectiles.forEach(function (p) {
+    p.draw(context);
+  });
   ship.draw(context, guide);
 }
 
 function update(elapsed) {
   asteroid.update(elapsed, context);
   ship.update(elapsed, context);
+  projectiles.forEach(function (projectile, i, projectiles) {
+    projectile.update(elapsed, context);
+    if (projectile.life <= 0) {
+      projectiles.splice(i, 1);
+    }
+  });
+  if (ship.trigger && ship.loaded) {
+    projectiles.push(ship.projectile(elapsed));
+  }
 }
 
 // implement the key handler function here
@@ -44,6 +60,10 @@ function key_handler(e, value) {
     case "ArrowRight":
     case 39:
       ship.right_thruster = value;
+      break;
+    case " ":
+    case 32:
+      ship.trigger = value;
       break;
     case "g":
     case 71:
