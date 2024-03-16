@@ -1,6 +1,13 @@
 // circle to circle collision detection algorithm
 // 1. find the distance between the centers of the two objects
-// 2. if the distance is less than the sum of the radii, the objects are touching
+// 2. if the distance is less than the sum of the radii, the objects are colliding
+function collision(obj1, obj2) {
+  return distance_between(obj1, obj2) < obj1.radius + obj2.radius;
+}
+
+function distance_between(obj1, obj2) {
+  return Math.sqrt(Math.pow(obj1.x - obj2.x, 2) + Math.pow(obj1.y - obj2.y, 2));
+}
 
 var AsteroidsGame = function (id) {
   this.canvas = document.getElementById(id);
@@ -149,6 +156,9 @@ AsteroidsGame.prototype.update = function (elapsed) {
   this.asteroids.forEach(function (asteroid) {
     asteroid.update(elapsed, this.c);
     // if collision happens, set ship to compromised
+    if (collision(asteroid, this.ship)) {
+      this.ship.compromised = true;
+    }
   }, this);
   this.ship.update(elapsed, this.c);
   this.projectiles.forEach(function (p, i, projectiles) {
