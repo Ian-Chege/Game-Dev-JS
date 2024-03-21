@@ -143,7 +143,11 @@ AsteroidsGame.prototype.key_handler = function (e, value) {
       break;
     case " ":
     case 32: //spacebar
-      this.ship.trigger = value;
+      if (this.game_over) {
+        this.reset_game();
+      } else {
+        this.ship.trigger = value;
+      }
       break;
     case "g":
     case 71: // g for guide
