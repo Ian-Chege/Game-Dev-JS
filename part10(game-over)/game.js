@@ -20,23 +20,19 @@ var AsteroidsGame = function (id) {
   this.asteroid_mass = 5000; // Mass of asteroids
   this.asteroid_push = 500000; // max force to apply in one frame
   this.mass_destroyed = 500; // mass of asteroid destroyed by projectile
-  this.score = 0;
-  this.ship = new Ship(
-    this.ship_mass,
-    this.ship_radius,
-    this.canvas.width / 2,
-    this.canvas.height / 2,
-    1000,
-    200
-  );
-  this.projectiles = [];
-  this.asteroids = [];
-  this.asteroids.push(this.moving_asteroid());
   this.health_indicator = new Indicator("health", 5, 5, 100, 10);
   this.score_indicator = new NumberIndicator(
     "score",
     this.canvas.width - 10,
     5
+  );
+  this.level_indicator = new NumberIndicator(
+    "level",
+    this.canvas.width / 2,
+    5,
+    {
+      align: "center",
+    }
   );
   this.fps_indicator = new NumberIndicator(
     "fps",
@@ -48,12 +44,14 @@ var AsteroidsGame = function (id) {
   this.canvas.addEventListener("keydown", this.keyDown.bind(this), true);
   this.canvas.addEventListener("keyup", this.keyUp.bind(this), true);
   window.requestAnimationFrame(this.frame.bind(this));
+  this.reset_game();
 };
 
 // reset game
 AsteroidsGame.prototype.reset_game = function () {
   this.game_over = false;
   this.score = 0;
+  this.level = 0;
   this.ship = new Ship(
     this.ship_mass,
     this.ship_radius,
@@ -64,7 +62,14 @@ AsteroidsGame.prototype.reset_game = function () {
   );
   this.projectiles = [];
   this.asteroids = [];
-  this.asteroids.push(this.moving_asteroid());
+  this.level_up();
+};
+
+AsteroidsGame.prototype.level_up = function () {
+  this.level += 1;
+  for (let i = 0; i < this.level; i++) {
+    this.asteroids.push(this.moving_asteroid());
+  }
 };
 
 // Toggle pause
@@ -174,6 +179,9 @@ AsteroidsGame.prototype.frame = function (timestamp) {
 };
 
 AsteroidsGame.prototype.update = function (elapsed) {
+  if (this.asteroids.length == 0) {
+    this.level_up();
+  }
   this.ship.compromised = false;
   this.asteroids.forEach(function (asteroid) {
     asteroid.update(elapsed, this.c);
@@ -231,4 +239,5 @@ AsteroidsGame.prototype.draw = function () {
   }, this);
   this.health_indicator.draw(this.c, this.ship.health, this.ship.max_health);
   this.score_indicator.draw(this.c, this.score);
+  this.level_indicator.draw(this.c, this.level);
 };
