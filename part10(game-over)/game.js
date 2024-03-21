@@ -44,9 +44,27 @@ var AsteroidsGame = function (id) {
     this.canvas.height - 15,
     { digits: 2 }
   );
+  this.message = new Message(this.canvas.width / 2, this.canvas.height / 2);
   this.canvas.addEventListener("keydown", this.keyDown.bind(this), true);
   this.canvas.addEventListener("keyup", this.keyUp.bind(this), true);
   window.requestAnimationFrame(this.frame.bind(this));
+};
+
+// reset game
+AsteroidsGame.prototype.reset_game = function () {
+  this.game_over = false;
+  this.score = 0;
+  this.ship = new Ship(
+    this.ship_mass,
+    this.ship_radius,
+    this.canvas.width / 2,
+    this.canvas.height / 2,
+    1000,
+    200
+  );
+  this.projectiles = [];
+  this.asteroids = [];
+  this.asteroids.push(this.moving_asteroid());
 };
 
 // Toggle pause
@@ -161,6 +179,10 @@ AsteroidsGame.prototype.update = function (elapsed) {
     }
   }, this);
   this.ship.update(elapsed, this.c);
+  if (this.ship.health <= 0) {
+    this.game_over = true;
+    return;
+  }
   this.projectiles.forEach(function (p, i, projectiles) {
     p.update(elapsed, this.c);
     if (p.life <= 0) {
@@ -195,6 +217,10 @@ AsteroidsGame.prototype.draw = function () {
   this.asteroids.forEach(function (asteroid) {
     asteroid.draw(this.c, this.guide);
   }, this);
+  if (this.game_over) {
+    this.message.draw(this.c, "GAME OVER", "Press space to play again");
+    return;
+  }
   this.ship.draw(this.c, this.guide);
   this.projectiles.forEach(function (p) {
     p.draw(this.c);
