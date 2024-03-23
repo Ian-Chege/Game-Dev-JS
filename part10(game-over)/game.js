@@ -66,6 +66,12 @@ AsteroidsGame.prototype.reset_game = function () {
 };
 
 // implement levelling up
+AsteroidsGame.prototype.level_up = function () {
+  this.level += 1;
+  for (let i = 0; i < this.level; i++) {
+    this.asteroids.push(this.moving_asteroid());
+  }
+};
 
 AsteroidsGame.prototype.togglePause = function () {
   this.paused = !this.paused;
@@ -143,7 +149,11 @@ AsteroidsGame.prototype.key_handler = function (e, value) {
     case " ":
     case 32: //spacebar
       // if game over, restart game
-
+      if (this.game_over) {
+        this.reset_game();
+      } else {
+        this.ship.trigger = value;
+      }
       break;
     case "g":
     case 71: // g for guide
@@ -183,7 +193,10 @@ AsteroidsGame.prototype.update = function (elapsed) {
   }, this);
   this.ship.update(elapsed, this.c);
   // if ship health is 0, game over
-
+  if (this.ship.health <= 0) {
+    this.game_over = true;
+    return;
+  }
   this.projectiles.forEach(function (p, i, projectiles) {
     p.update(elapsed, this.c);
     if (p.life <= 0) {
@@ -219,7 +232,10 @@ AsteroidsGame.prototype.draw = function () {
     asteroid.draw(this.c, this.guide);
   }, this);
   // if game over, display game over message
-
+  if (this.game_over) {
+    this.message.draw(this.c, "GAME OVER", "Press space key to play again");
+    return;
+  }
   this.ship.draw(this.c, this.guide);
   this.projectiles.forEach(function (p) {
     p.draw(this.c);
